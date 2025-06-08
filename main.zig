@@ -5,6 +5,6 @@ const MAX_POWER = user.MAX_POWER;
 
 // This code won't compile if main isn't pub
 pub fn main() void {
-    const u = User{ .power = 9001, .name = "Goku" };
+    const u = User{ .power = 9001 };
     print("{s}'s power is {d} out of {d}\n", .{ u.name, u.power, MAX_POWER });
 }
