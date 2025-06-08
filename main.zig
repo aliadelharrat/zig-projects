@@ -1,11 +1,13 @@
 const std = @import("std");
 
 pub fn main() void {
-    const name = "adel";
-    const isEqual = if (std.ascii.endsWithIgnoreCase(name, "Adel")) true else false;
-    if (isEqual) {
-        std.debug.print("The name is Adel\n", .{});
-    } else {
-        std.debug.print("The name is NOT Adel\n", .{});
-    }
+    const buttonPressed = 3;
+    const snack = switch (buttonPressed) {
+        1 => "chips",
+        2 => "candy",
+        3 => "soda",
+        4 => "water",
+        else => "not defined",
+    };
+    std.debug.print("you've choosed {s}", .{snack});
 }
