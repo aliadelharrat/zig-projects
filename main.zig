@@ -7,4 +7,5 @@ const MAX_POWER = user.MAX_POWER;
 pub fn main() void {
     const u = User{ .power = 9001 };
     print("{s}'s power is {d} out of {d}\n", .{ u.name, u.power, MAX_POWER });
+    u.diagnose();
 }
