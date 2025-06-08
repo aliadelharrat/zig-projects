@@ -1,39 +1,23 @@
 const std = @import("std");
 
 pub fn main() void {
-    const groceries = [_][]const u8{
-        "Bread",
-        "Eggs",
-        "Chicken",
-        "Apples",
-        "Bananas",
-        "Rice",
-        "Pasta",
-        "Tomato sauce",
-        "Lettuce",
-        "Carrots",
-        "Onions",
-        "Cheese",
-        "Yogurt",
-        "Butter",
-        "Olive oil",
-        "Cereal",
-        "Coffee",
-        // "Milk",
-        "Sugar",
-        "Toilet paper",
-    };
+    const array_one = [_][]const u8{ "a", "b", "c" };
+    const array_two = [_][]const u8{ "a", "b" };
 
-    var found = false;
-    for (groceries) |grocery| {
-        if (std.ascii.eqlIgnoreCase(grocery, "milk")) {
-            found = true;
-            break;
+    const isEql = array_eq(array_one, array_two);
+    std.debug.print("does array_one = array_two ? {?}", .{isEql});
+}
+
+fn array_eq(a1: [3][]const u8, a2: [2][]const u8) bool {
+    if (a1.len != a2.len) {
+        return false;
+    }
+
+    for (a1, a2) |a1_el, a2_el| {
+        if (!std.ascii.eqlIgnoreCase(a1_el, a2_el)) {
+            return false;
         }
     }
-    if (found) {
-        std.debug.print("You've milk!\n", .{});
-    } else {
-        std.debug.print("You don't have milk!", .{});
-    }
+
+    return true;
 }
