@@ -1,7 +1,7 @@
 const std = @import("std");
 
 pub fn main() void {
-    const groceries = []const u8{
+    const groceries = [_][]const u8{
         "Bread",
         "Eggs",
         "Chicken",
@@ -19,16 +19,21 @@ pub fn main() void {
         "Olive oil",
         "Cereal",
         "Coffee",
-        "Milk",
+        // "Milk",
         "Sugar",
         "Toilet paper",
     };
 
+    var found = false;
     for (groceries) |grocery| {
         if (std.ascii.eqlIgnoreCase(grocery, "milk")) {
-            std.debug.print("You've milk!", .{});
+            found = true;
             break;
         }
+    }
+    if (found) {
+        std.debug.print("You've milk!\n", .{});
+    } else {
         std.debug.print("You don't have milk!", .{});
     }
 }
